@@ -14,207 +14,266 @@
  |  See the License for the specific language governing permissions and
  |  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.adobe.aem.addon.guides</groupId>
-  <artifactId>aem-guides-it-tests</artifactId>
-  <version>0.0.1</version>
-  <name>AEM Guides - Integration Tests</name>
-  <description>AEM Guides Integration Tests for AEMaaCS</description>
+    <groupId>com.adobe.aem.addon.guides</groupId>
+    <artifactId>aem-guides-it-tests</artifactId>
+    <version>0.0.1</version>
+    <name>AEM Guides - Integration Tests</name>
+    <description>AEM Guides Integration Tests for AEMaaCS</description>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <organization>
+        <name>Adobe</name>
+        <url>https://www.adobe.com/</url>
+    </organization>
+    <url>https://docs.adobe.com/content/help/en/experience-manager-learn/cloud-service/overview.html</url>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-    </dependency>
-    <dependency>
-      <groupId>net.sourceforge.htmlunit</groupId>
-      <artifactId>htmlunit</artifactId>
-      <version>2.45.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.adobe.cq</groupId>
-      <artifactId>aem-cloud-testing-clients</artifactId>
-      <version>0.2.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.25</version>
-    </dependency>
-  </dependencies>
+    <licenses>
+        <license>
+            <name>Copyright 2007 Adobe. All Rights Reserved.</name>
+            <comments>All information contained herein is, and remains
+                the property of Adobe and its suppliers, if any. The intellectual
+                and technical concepts contained herein are proprietary to Adobe
+                and its suppliers and are protected by all applicable intellectual
+                property laws, including trade secret and copyright laws.
+                Dissemination of this information or reproduction of this material
+                is strictly forbidden unless prior written permission is obtained
+                from Adobe.
+            </comments>
+        </license>
+    </licenses>
 
-  <profiles>
-    <profile>
-      <id>local</id>
-      <properties>
-        <!-- Cloud author service (LB) -->
-        <it.author.url>http://localhost:4502</it.author.url>
-        <it.author.user>admin</it.author.user>
-        <it.author.password>admin</it.author.password>
+    <developers>
+        <developer>
+            <organization>Adobe</organization>
+            <organizationUrl>https://www.adobe.com/</organizationUrl>
+        </developer>
+    </developers>
 
-        <!-- cloud publish service (LB) -->
-        <it.publish.url>http://localhost:4503</it.publish.url>
-        <it.publish.user>admin</it.publish.user>
-        <it.publish.password>admin</it.publish.password>
-      </properties>
-      <build>
+    <scm>
+        <url/>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>2.45.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>aem-cloud-testing-clients</artifactId>
+            <version>0.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <!-- Cloud author service (LB) -->
+                <it.author.url>http://localhost:4502</it.author.url>
+                <it.author.user>admin</it.author.user>
+                <it.author.password>admin</it.author.password>
+
+                <!-- cloud publish service (LB) -->
+                <it.publish.url>http://localhost:4503</it.publish.url>
+                <it.publish.user>admin</it.publish.user>
+                <it.publish.password>admin</it.publish.password>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.21.0</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.21.0</version>
+                        <configuration>
+                            <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+                            <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
+                            <systemPropertyVariables>
+                                <!-- Same properties as used when run in a AEM CI/CD pipeline -->
+                                <sling.it.configure.default.replication.agents>false
+                                </sling.it.configure.default.replication.agents>
+                                <com.sun.security.enableAIAcaIssuers>true</com.sun.security.enableAIAcaIssuers>
+                                <it.logintokenauth>true</it.logintokenauth>
+
+                                <!-- Sling Testing Tools properties for configuring the test instances -->
+                                <sling.it.instances>2</sling.it.instances>
+
+                                <!-- Author service -->
+                                <sling.it.instance.url.1>${it.author.url}</sling.it.instance.url.1>
+                                <sling.it.instance.runmode.1>author</sling.it.instance.runmode.1>
+                                <sling.it.instance.adminUser.1>${it.author.user}</sling.it.instance.adminUser.1>
+                                <sling.it.instance.adminPassword.1>${it.author.password}
+                                </sling.it.instance.adminPassword.1>
+
+                                <!-- Publish service -->
+                                <sling.it.instance.url.2>${it.publish.url}</sling.it.instance.url.2>
+                                <sling.it.instance.runmode.2>publish</sling.it.instance.runmode.2>
+                                <sling.it.instance.adminUser.2>${it.publish.user}</sling.it.instance.adminUser.2>
+                                <sling.it.instance.adminPassword.2>${it.publish.password}
+                                </sling.it.instance.adminPassword.2>
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>default-integration-test</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                                <configuration>
+                                    <includes>
+                                        <include>**/*IT.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>default-verify</id>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.21.0</version>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <version>2.21.0</version>
-            <configuration>
-              <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
-              <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
-              <systemPropertyVariables>
-                <!-- Same properties as used when run in a AEM CI/CD pipeline -->
-                <sling.it.configure.default.replication.agents>false</sling.it.configure.default.replication.agents>
-                <com.sun.security.enableAIAcaIssuers>true</com.sun.security.enableAIAcaIssuers>
-                <it.logintokenauth>true</it.logintokenauth>
-
-                <!-- Sling Testing Tools properties for configuring the test instances -->
-                <sling.it.instances>2</sling.it.instances>
-
-                <!-- Author service -->
-                <sling.it.instance.url.1>${it.author.url}</sling.it.instance.url.1>
-                <sling.it.instance.runmode.1>author</sling.it.instance.runmode.1>
-                <sling.it.instance.adminUser.1>${it.author.user}</sling.it.instance.adminUser.1>
-                <sling.it.instance.adminPassword.1>${it.author.password}
-                </sling.it.instance.adminPassword.1>
-
-                <!-- Publish service -->
-                <sling.it.instance.url.2>${it.publish.url}</sling.it.instance.url.2>
-                <sling.it.instance.runmode.2>publish</sling.it.instance.runmode.2>
-                <sling.it.instance.adminUser.2>${it.publish.user}</sling.it.instance.adminUser.2>
-                <sling.it.instance.adminPassword.2>${it.publish.password}
-                </sling.it.instance.adminPassword.2>
-              </systemPropertyVariables>
-            </configuration>
-            <executions>
-              <execution>
-                <id>default-integration-test</id>
-                <goals>
-                  <goal>integration-test</goal>
-                </goals>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                  <includes>
-                    <include>**/*IT.java</include>
-                  </includes>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifestEntries>
+                            <Cloud-Manager-TestType>integration-test</Cloud-Manager-TestType>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
-              </execution>
-              <execution>
-                <id>default-verify</id>
-                <goals>
-                  <goal>verify</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory>
+                                    <includes>
+                                        <include>pom.xml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-  </profiles>
-
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifestEntries>
-              <Cloud-Manager-TestType>integration-test</Cloud-Manager-TestType>
-            </manifestEntries>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.7</version>
-        <executions>
-          <execution>
-            <id>attach-javadoc</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.1.2</version>
-        <executions>
-          <execution>
-            <id>attach-source</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+    </build>
 </project>
