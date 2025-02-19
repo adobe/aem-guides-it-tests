@@ -36,7 +36,7 @@ public class GetSystemStatusIT {
 
         try {
             SystemStatusResponseDto resp = mapper.readValue(responseContent, SystemStatusResponseDto.class);
-            Assert.assertTrue(resp.isCloud);
+            Assert.assertFalse(resp.isCloud);
             Assert.assertTrue(resp.isUuid);
             Assert.assertArrayEquals(new String[]{}, resp.inactiveBundles);
         } catch (Exception e) {
