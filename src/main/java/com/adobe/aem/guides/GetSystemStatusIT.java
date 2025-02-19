@@ -13,6 +13,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Tests if the system status is correct and all the bundles are up and running as expected.
+ */
 public class GetSystemStatusIT {
 
     private static final Logger log = LoggerFactory.getLogger(GetSystemStatusIT.class);
@@ -27,6 +30,9 @@ public class GetSystemStatusIT {
         adminAuthor = cqBaseClassRule.authorRule.getAdminClient(CQClient.class);
     }
 
+    /**
+     * Verifies the response of the system status endpoint.
+     */
     @Test
     public void testSystemStatusResponseForCloudTrue() throws ClientException {
         ObjectMapper mapper = new ObjectMapper();

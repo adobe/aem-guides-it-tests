@@ -19,7 +19,7 @@
 
   <groupId>com.adobe.aem.addon.guides</groupId>
   <artifactId>aem-guides-it-tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>AEM Guides - Integration Tests</name>
   <description>AEM Guides Integration Tests for AEMaaCS</description>
 
@@ -185,6 +185,32 @@
             <phase>package</phase>
             <goals>
               <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>attach-javadoc</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <executions>
+          <execution>
+            <id>attach-source</id>
+            <goals>
+              <goal>jar</goal>
             </goals>
           </execution>
         </executions>
