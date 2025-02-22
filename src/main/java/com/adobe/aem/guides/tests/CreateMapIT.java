@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 public class CreateMapIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateMapIT.class);
+
     public void testCreateMap(CQClient adminAuthor) {
         try {
             CreateMapDto createMapDto = new CreateMapDto()

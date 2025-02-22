@@ -1,6 +1,5 @@
 package com.adobe.aem.guides.tests;
 
-import com.adobe.aem.guides.dto.CreateMapDto;
 import com.adobe.aem.guides.dto.GenerateOutputDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.cq.testing.client.CQClient;
