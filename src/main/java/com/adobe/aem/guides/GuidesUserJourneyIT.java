@@ -7,6 +7,7 @@ import com.adobe.aem.guides.tests.CreatePresetIT;
 import com.adobe.aem.guides.tests.CreateTopicIT;
 import com.adobe.aem.guides.tests.GeneratePdfIT;
 import com.adobe.aem.guides.tests.GetSystemStatusIT;
+import com.adobe.aem.guides.tests.UpdateDitaMap;
 import com.adobe.cq.testing.client.CQClient;
 import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
 import org.junit.BeforeClass;
@@ -49,21 +50,26 @@ public class GuidesUserJourneyIT {
 
     @Test
     public void testDcreateMap() {
-        new CreateMapIT().testCreateMapAndAddTopic(adminAuthor);
+        new CreateMapIT().testCreateMap(adminAuthor);
     }
 
     @Test
-    public void testEcreatePreset() {
+    public void testEUpdateDitaMap() {
+        new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
+    }
+
+    @Test
+    public void testFcreatePreset() {
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
-    public void testFgeneratePdf() {
+    public void testGgeneratePdf() {
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
     @Test
-    public void testGcomparePdfWithBaseline() {
+    public void testHcomparePdfWithBaseline() {
         new ComparePdfWithBaselineIT().testComparePdfWithBaseline(adminAuthor);
     }
 }

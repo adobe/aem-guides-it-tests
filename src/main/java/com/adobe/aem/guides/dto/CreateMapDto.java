@@ -1,6 +1,6 @@
 package com.adobe.aem.guides.dto;
 
-public class CreateTopicDto {
+public class CreateMapDto {
     private String parent;
     private String title;
     private String name;
@@ -10,7 +10,7 @@ public class CreateTopicDto {
         return parent;
     }
 
-    public CreateTopicDto setParent(String parent) {
+    public CreateMapDto setParent(String parent) {
         this.parent = parent;
         return this;
     }
@@ -19,7 +19,7 @@ public class CreateTopicDto {
         return title;
     }
 
-    public CreateTopicDto setTitle(String title) {
+    public CreateMapDto setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -28,7 +28,7 @@ public class CreateTopicDto {
         return name;
     }
 
-    public CreateTopicDto setName(String name) {
+    public CreateMapDto setName(String name) {
         this.name = name;
         return this;
     }
@@ -37,7 +37,7 @@ public class CreateTopicDto {
         return template;
     }
 
-    public CreateTopicDto setTemplate(String template) {
+    public CreateMapDto setTemplate(String template) {
         this.template = template;
         return this;
     }
