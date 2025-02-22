@@ -1,7 +1,7 @@
 package com.adobe.aem.guides.tests;
 
-import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.aem.guides.dto.CreateFolderDto;
+import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.StringEntity;

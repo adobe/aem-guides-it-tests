@@ -11,10 +11,13 @@ import com.adobe.cq.testing.client.CQClient;
 import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GuidesUserJourneyIT {
 
     private static final Logger log = LoggerFactory.getLogger(GuidesUserJourneyIT.class);
@@ -30,37 +33,37 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void checkSystemHealth() {
+    public void testAcheckSystemHealth() {
         new GetSystemStatusIT().testSystemStatusResponseForCloudTrue(adminAuthor);
     }
 
     @Test
-    public void createFolder() {
+    public void testBcreateFolder() {
         new CreateFolderIT().testCreateFolder(adminAuthor);
     }
 
     @Test
-    public void createTopic() {
+    public void testCcreateTopic() {
         new CreateTopicIT().testCreateTopic(adminAuthor);
     }
 
     @Test
-    public void createMap() {
+    public void testDcreateMap() {
         new CreateMapIT().testCreateMapAndAddTopic(adminAuthor);
     }
 
     @Test
-    public void createPreset() {
+    public void testEcreatePreset() {
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
-    public void generatePdf() {
+    public void testFgeneratePdf() {
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
     @Test
-    public void comparePdfWithBaseline() {
+    public void testGcomparePdfWithBaseline() {
         new ComparePdfWithBaselineIT().testComparePdfWithBaseline(adminAuthor);
     }
 }
