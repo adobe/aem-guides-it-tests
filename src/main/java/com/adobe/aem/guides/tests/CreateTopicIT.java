@@ -4,8 +4,13 @@ import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CreateTopicIT {
+
+    private static final Logger log = LoggerFactory.getLogger(CreateTopicIT.class);
+
     public void testCreateTopic(CQClient adminAuthor) {
         try {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
@@ -17,7 +22,8 @@ public class CreateTopicIT {
                     .build();
             adminAuthor.doPost("/bin/fmdita/xmleditor/create", entity, 201);
         } catch (Exception e) {
-            Assert.fail("Couldn't read response from System Status endpoint");
+            log.error("Error in creating topic", e);
+            Assert.fail("Error in creating topic");
         }
     }
 }

@@ -23,8 +23,8 @@ public class CreateMapIT {
             httpEntity.setContentType("application/json");
             adminAuthor.doPost("/bin/guides/v1/create/ditamap", httpEntity, 201);
         } catch (Exception e) {
-            log.info("Couldn't read response from System Status endpoint", e);
-            Assert.fail("Couldn't read response from System Status endpoint");
+            log.error("Error in creating ditamap folder", e);
+            Assert.fail("Error in creating ditamap");
         }
     }
 }

@@ -8,6 +8,7 @@ import com.adobe.aem.guides.tests.CreateTopicIT;
 import com.adobe.aem.guides.tests.GeneratePdfIT;
 import com.adobe.aem.guides.tests.GetSystemStatusIT;
 import com.adobe.aem.guides.tests.UpdateDitaMap;
+import com.adobe.aem.guides.utils.TestUtils;
 import com.adobe.cq.testing.client.CQClient;
 import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
 import org.junit.BeforeClass;
@@ -34,7 +35,12 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void testAcheckSystemHealth() {
+    public void testAdeleteFolder() {
+        TestUtils.deleteFolder(adminAuthor);
+    }
+
+    @Test
+    public void testABcheckSystemHealth() {
         new GetSystemStatusIT().testSystemStatusResponseForCloudTrue(adminAuthor);
     }
 

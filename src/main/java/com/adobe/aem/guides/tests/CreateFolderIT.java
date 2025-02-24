@@ -24,7 +24,8 @@ public class CreateFolderIT {
             HttpEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(createFolderDto));
             adminAuthor.doPost("/content/dam/guides-it-tests", httpEntity, 201);
         } catch (Exception e) {
-            Assert.fail("Couldn't read response from System Status endpoint");
+            log.error("Error in creating test folder", e);
+            Assert.fail("Error in creating folder");
         }
     }
 }

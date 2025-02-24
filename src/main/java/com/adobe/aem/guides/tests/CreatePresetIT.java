@@ -4,8 +4,15 @@ import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class CreatePresetIT {
+
+    private static final Logger log = LoggerFactory.getLogger(CreatePresetIT.class);
+
     public void testCreatePreset(CQClient adminAuthor) {
         try {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
@@ -24,8 +31,8 @@ public class CreatePresetIT {
                     .build();
             adminAuthor.doPost("/bin/publishlistener", entity, 200);
         } catch (Exception e) {
-            Assert.fail("Couldn't read response from System Status endpoint");
+            log.error("Error in creating preset", e);
+            Assert.fail("Error in creating preset");
         }
-
     }
 }

@@ -29,7 +29,8 @@ public class GetSystemStatusIT {
             Assert.assertTrue(resp.isUuid);
             Assert.assertArrayEquals(new String[]{}, resp.inactiveBundles);
         } catch (Exception e) {
-            Assert.fail("Couldn't read response from System Status endpoint");
+            log.error("Error in checking system status", e);
+            Assert.fail("Error in checking system status");
         }
     }
 }
