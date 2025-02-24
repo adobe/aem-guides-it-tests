@@ -14,7 +14,7 @@ public class TestUtils {
     public static boolean deleteFolder(CQClient adminAuthor) {
         try {
             SlingHttpResponse slingHttpResponse = adminAuthor.doGet("/content/dam/guides-it-tests.json");
-            if (slingHttpResponse.getStatusLine().getStatusCode() == 404) {
+            if (slingHttpResponse.getStatusLine().getStatusCode() == 200) {
                 UrlEncodedFormEntity entity = FormEntityBuilder.create()
                         .addParameter("cmd", "deletePage")
                         .addParameter("path", "/content/dam/guides-it-tests")
