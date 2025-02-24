@@ -1,5 +1,6 @@
 package com.adobe.aem.guides.tests;
 
+import com.adobe.aem.guides.Constants;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
@@ -16,9 +17,9 @@ public class CreateTopicIT {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
                     .addParameter("template", "/content/dam/dita-templates/topics/topic.dita")
                     .addParameter("title", "Test Topic")
-                    .addParameter("name", "test-topic.dita")
+                    .addParameter("name", Constants.TOPIC_NAME)
                     .addParameter("_charset_", "utf-8")
-                    .addParameter("parent", "/content/dam/guides-it-tests")
+                    .addParameter("parent", Constants.TEST_FOLDER_PATH)
                     .build();
             adminAuthor.doPost("/bin/fmdita/xmleditor/create", entity, 201);
         } catch (Exception e) {

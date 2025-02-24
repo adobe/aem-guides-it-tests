@@ -1,5 +1,6 @@
 package com.adobe.aem.guides.tests;
 
+import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.AllPublishingStatusDto;
 import com.adobe.aem.guides.dto.GenerateOutputDto;
 import com.adobe.aem.guides.dto.PublishingStatusDto;
@@ -25,7 +26,7 @@ public class GeneratePdfIT {
         try {
             GenerateOutputDto generateOutputDto = new GenerateOutputDto()
                     .setPresetName("test-pdf")
-                    .setMapPath("/content/dam/guides-it-tests/test-map.ditamap");
+                    .setMapPath(Constants.TEST_FOLDER_PATH + "/" + Constants.MAP_NAME);
             StringEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(generateOutputDto));
             httpEntity.setContentType("application/json");
             adminAuthor.doPost("/bin/guides/v1/output/execute", httpEntity, 200);
@@ -46,9 +47,9 @@ public class GeneratePdfIT {
     private static PublishingStatusDto checkingPublishingStatus(CQClient adminAuthor) throws ClientException, JsonProcessingException {
         int pollCount = 0;
         int totalPollCount = 50;
-        int pollInterval = 10000;
+        int pollInterval = 5000;
         List<NameValuePair> params = new ArrayList<>();
-        params.add(new BasicNameValuePair("source", "/content/dam/guides-it-tests/test-map.ditamap"));
+        params.add(new BasicNameValuePair("source", Constants.TEST_FOLDER_PATH + "/" + Constants.MAP_NAME));
         params.add(new BasicNameValuePair("operation", "PUBLISHBEACON"));
         while (pollCount < totalPollCount) {
             SlingHttpResponse slingHttpResponse = adminAuthor.doGet("/bin/publishlistener", params, 200);

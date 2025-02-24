@@ -1,5 +1,7 @@
 package com.adobe.aem.guides.tests;
 
+import aQute.libg.map.MAP;
+import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.CreateMapDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.cq.testing.client.CQClient;
@@ -15,10 +17,10 @@ public class CreateMapIT {
     public void testCreateMap(CQClient adminAuthor) {
         try {
             CreateMapDto createMapDto = new CreateMapDto()
-                    .setName("test-map.ditamap")
+                    .setName(Constants.MAP_NAME)
                     .setTemplate("/content/dam/dita-templates/maps/map.ditamap")
                     .setTitle("Test Map")
-                    .setParent("/content/dam/guides-it-tests");
+                    .setParent(Constants.TEST_FOLDER_PATH);
             StringEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(createMapDto));
             httpEntity.setContentType("application/json");
             adminAuthor.doPost("/bin/guides/v1/create/ditamap", httpEntity, 201);

@@ -1,5 +1,6 @@
 package com.adobe.aem.guides.tests;
 
+import com.adobe.aem.guides.Constants;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
@@ -17,12 +18,12 @@ public class UpdateDitaMap {
                             "<!DOCTYPE map PUBLIC \"-//OASIS//DTD DITA Map//EN\" \"technicalContent/dtd/map.dtd\">\n" +
                             "<map id=\"GUID-d2612949-42df-4eef-a0ec-7fc81d940b75\">\n" +
                             "  <title>Test Map</title>\n" +
-                            "  <topicref href=\"test-topic.dita\" type=\"topic\">\n" +
+                            "  <topicref href=\"" + Constants.TOPIC_NAME + "\" type=\"topic\">\n" +
                             "  </topicref>\n" +
                             "</map>")
                     .addParameter("operation", "postdita")
                     .addParameter("createrev", "false")
-                    .addParameter("path", "/content/dam/guides-it-tests/test-map.ditamap")
+                    .addParameter("path", Constants.TEST_FOLDER_PATH + "/" + Constants.MAP_NAME)
                     .build();
             adminAuthor.doPost("/bin/referencelistener", entity, 200);
         } catch (Exception e) {
