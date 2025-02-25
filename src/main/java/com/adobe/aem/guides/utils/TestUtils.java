@@ -1,6 +1,5 @@
 package com.adobe.aem.guides.utils;
 
-import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.GetFolderProfileResponseDto;
 import com.adobe.aem.guides.dto.Template;
 import com.adobe.cq.testing.client.CQClient;
@@ -18,7 +17,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static com.adobe.aem.guides.Constants.*;
+import static com.adobe.aem.guides.Constants.MAP_TEMPLATE_NAME;
+import static com.adobe.aem.guides.Constants.TEST_FOLDER_PATH;
+import static com.adobe.aem.guides.Constants.TOPIC_TEMPLATE_NAME;
 
 public class TestUtils {
 
@@ -45,7 +46,7 @@ public class TestUtils {
 
     public static String getTemplate(CQClient adminAuthor, TemplateType templateType) {
         List<Template> templates = Collections.emptyList();
-        String templateToSelect = templateType == TemplateType.MAP_TEMPLATE ? MAP_TEMPLATE_NAME: TOPIC_TEMPLATE_NAME;
+        String templateToSelect = templateType == TemplateType.MAP_TEMPLATE ? MAP_TEMPLATE_NAME : TOPIC_TEMPLATE_NAME;
         try {
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("operation", "GETFOLDERPROFILEBYID"));

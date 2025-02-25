@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 public class UpdateDitaMap {
 
     private static final Logger log = LoggerFactory.getLogger(UpdateDitaMap.class);
+
     public void testUpdateDitaMap(CQClient adminAuthor) {
         try {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()

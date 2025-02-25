@@ -1,6 +1,5 @@
 package com.adobe.aem.guides.tests;
 
-import aQute.libg.map.MAP;
 import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.CreateMapDto;
 import com.adobe.aem.guides.utils.JsonUtils;

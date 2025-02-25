@@ -2,7 +2,8 @@ package com.adobe.aem.guides;
 
 public class Constants {
 
-    private Constants() {}
+    private Constants() {
+    }
 
     public static final String UTF_8 = "utf-8";
     public static final String TEST_FOLDER_NAME = "guides-upgrade-tests";
