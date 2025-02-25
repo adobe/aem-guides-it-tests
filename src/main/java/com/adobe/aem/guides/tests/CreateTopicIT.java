@@ -1,6 +1,8 @@
 package com.adobe.aem.guides.tests;
 
 import com.adobe.aem.guides.Constants;
+import com.adobe.aem.guides.utils.TemplateType;
+import com.adobe.aem.guides.utils.TestUtils;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
@@ -14,8 +16,9 @@ public class CreateTopicIT {
 
     public void testCreateTopic(CQClient adminAuthor) {
         try {
+            String template = TestUtils.getTemplate(adminAuthor, TemplateType.TOPIC_TEMPLATE);
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
-                    .addParameter("template", "/content/dam/dita-templates/topics/topic.dita")
+                    .addParameter("template", template)
                     .addParameter("title", "Test Topic")
                     .addParameter("name", Constants.TOPIC_NAME)
                     .addParameter("_charset_", "utf-8")

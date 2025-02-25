@@ -4,6 +4,8 @@ import aQute.libg.map.MAP;
 import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.CreateMapDto;
 import com.adobe.aem.guides.utils.JsonUtils;
+import com.adobe.aem.guides.utils.TemplateType;
+import com.adobe.aem.guides.utils.TestUtils;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.entity.StringEntity;
 import org.junit.Assert;
@@ -16,9 +18,10 @@ public class CreateMapIT {
 
     public void testCreateMap(CQClient adminAuthor) {
         try {
+            String template = TestUtils.getTemplate(adminAuthor, TemplateType.MAP_TEMPLATE);
             CreateMapDto createMapDto = new CreateMapDto()
                     .setName(Constants.MAP_NAME)
-                    .setTemplate("/content/dam/dita-templates/maps/map.ditamap")
+                    .setTemplate(template)
                     .setTitle("Test Map")
                     .setParent(Constants.TEST_FOLDER_PATH);
             StringEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(createMapDto));

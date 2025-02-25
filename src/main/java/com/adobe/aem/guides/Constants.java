@@ -9,5 +9,7 @@ public class Constants {
     public static final String TEST_FOLDER_PATH = "/content/dam/" + TEST_FOLDER_NAME;
     public static final String MAP_NAME = "test-map.ditamap";
     public static final String TOPIC_NAME = "test.dita";
+    public static final String TOPIC_TEMPLATE_NAME = "topic.dita";
+    public static final String MAP_TEMPLATE_NAME = "map.ditamap";
 
 }
