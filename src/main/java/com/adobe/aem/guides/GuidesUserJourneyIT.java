@@ -35,42 +35,50 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void testAdeleteFolder() {
-        TestUtils.deleteFolder(adminAuthor);
-    }
-
-    @Test
-    public void testABcheckSystemHealth() {
+    public void testAcheckSystemHealth() {
+        log.info("Checking system health");
         new GetSystemStatusIT().testSystemStatusResponseForCloudTrue(adminAuthor);
     }
 
     @Test
-    public void testBcreateFolder() {
+    public void testBAdeleteFolder() {
+        log.info("Deleting test folder");
+        TestUtils.deleteFolder(adminAuthor);
+    }
+
+    @Test
+    public void testBBcreateFolder() {
+        log.info("Creating test folder");
         new CreateFolderIT().testCreateFolder(adminAuthor);
     }
 
     @Test
     public void testCcreateTopic() {
+        log.info("Creating test topic");
         new CreateTopicIT().testCreateTopic(adminAuthor);
     }
 
     @Test
     public void testDcreateMap() {
+        log.info("Creating test map");
         new CreateMapIT().testCreateMap(adminAuthor);
     }
 
     @Test
     public void testEUpdateDitaMap() {
+        log.info("Updating test map");
         new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
     }
 
     @Test
     public void testFcreatePreset() {
+        log.info("Creating test preset");
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
     public void testGgeneratePdf() {
+        log.info("Generating PDF");
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
