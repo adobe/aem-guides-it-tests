@@ -41,49 +41,49 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void testBAdeleteFolder() {
+    public void testBdeleteFolder() {
         log.info("Deleting test folder");
         TestUtils.deleteFolder(adminAuthor);
     }
 
     @Test
-    public void testBBcreateFolder() {
+    public void testCcreateFolder() {
         log.info("Creating test folder");
         new CreateFolderIT().testCreateFolder(adminAuthor);
     }
 
     @Test
-    public void testCcreateTopic() {
+    public void testDcreateTopic() {
         log.info("Creating test topic");
         new CreateTopicIT().testCreateTopic(adminAuthor);
     }
 
     @Test
-    public void testDcreateMap() {
+    public void testEcreateMap() {
         log.info("Creating test map");
         new CreateMapIT().testCreateMap(adminAuthor);
     }
 
     @Test
-    public void testEUpdateDitaMap() {
+    public void testFUpdateDitaMap() {
         log.info("Updating test map");
         new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
     }
 
     @Test
-    public void testFcreatePreset() {
+    public void testGcreatePreset() {
         log.info("Creating test preset");
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
-    public void testGgeneratePdf() {
+    public void testHgeneratePdf() {
         log.info("Generating PDF");
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
     @Test
-    public void testHcomparePdfWithBaseline() {
+    public void testIcomparePdfWithBaseline() {
         new ComparePdfWithBaselineIT().testComparePdfWithBaseline(adminAuthor);
     }
 }
