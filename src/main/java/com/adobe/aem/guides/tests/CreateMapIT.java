@@ -11,6 +11,8 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.adobe.aem.guides.Constants.*;
+
 public class CreateMapIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateMapIT.class);
@@ -19,13 +21,14 @@ public class CreateMapIT {
         try {
             String template = TestUtils.getTemplate(adminAuthor, TemplateType.MAP_TEMPLATE);
             CreateMapDto createMapDto = new CreateMapDto()
-                    .setName(Constants.MAP_NAME)
+                    .setName(MAP_NAME)
                     .setTemplate(template)
                     .setTitle("Test Map")
-                    .setParent(Constants.TEST_FOLDER_PATH);
+                    .setParent(TEST_FOLDER_PATH);
             StringEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(createMapDto));
             httpEntity.setContentType("application/json");
-            adminAuthor.doPost("/bin/guides/v1/create/ditamap", httpEntity, 201);
+            adminAuthor.doPost("/bin/guides/v1/create/ditamap", httpEntity);
+            adminAuthor.doGet(TEST_FOLDER_PATH + "/" + MAP_NAME + ".json", 200);
         } catch (Exception e) {
             log.error("Error in creating ditamap folder", e);
             Assert.fail("Error in creating ditamap");
