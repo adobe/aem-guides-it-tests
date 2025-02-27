@@ -16,7 +16,7 @@ public class CreatePresetIT {
         try {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
                     .addParameter(":operation", "createoutput")
-                    .addParameter("outputTitle", "Test-PDF")
+                    .addParameter("outputTitle", "test-pdf")
                     .addParameter("outputType", "pdf")
                     .addParameter("sourcePath", Constants.TEST_FOLDER_PATH + "/" + Constants.MAP_NAME)
                     .build();
