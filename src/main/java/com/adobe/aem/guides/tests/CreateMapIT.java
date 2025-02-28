@@ -1,6 +1,5 @@
 package com.adobe.aem.guides.tests;
 
-import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.dto.CreateMapDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.aem.guides.utils.TemplateType;
@@ -11,7 +10,8 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.adobe.aem.guides.Constants.*;
+import static com.adobe.aem.guides.Constants.MAP_NAME;
+import static com.adobe.aem.guides.Constants.TEST_FOLDER_PATH;
 
 public class CreateMapIT {
 
