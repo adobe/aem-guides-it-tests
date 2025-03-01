@@ -9,6 +9,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.sling.testing.clients.SlingHttpResponse;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,11 +22,15 @@ import static com.adobe.aem.guides.Constants.MAP_TEMPLATE_NAME;
 import static com.adobe.aem.guides.Constants.TEST_FOLDER_PATH;
 import static com.adobe.aem.guides.Constants.TOPIC_TEMPLATE_NAME;
 
+/**
+ * Utility class for test methods.
+ * This class contains methods to delete folder, get template etc.
+ */
 public class TestUtils {
 
     private static final Logger log = LoggerFactory.getLogger(TestUtils.class);
 
-    public static boolean deleteFolder(CQClient adminAuthor) {
+    public static void deleteFolder(CQClient adminAuthor) {
         try {
             SlingHttpResponse slingHttpResponse = adminAuthor.doGet(TEST_FOLDER_PATH + ".json");
             if (slingHttpResponse.getStatusLine().getStatusCode() == 200) {
@@ -37,10 +42,9 @@ public class TestUtils {
                         .build();
                 adminAuthor.doPost("/bin/wcmcommand", entity, 200);
             }
-            return true;
         } catch (Exception e) {
             log.error("Error in deleting test folder", e);
-            return false;
+            Assert.fail("Error in deleting folder");
         }
     }
 

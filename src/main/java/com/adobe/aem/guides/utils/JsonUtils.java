@@ -2,16 +2,19 @@ package com.adobe.aem.guides.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-
+/**
+ * Utility class for JSON operations
+ * This class uses Jackson library for JSON operations
+ * Jackson is a high-performance JSON processor for Java
+ * It is used to serialize and deserialize Java objects to (and from) JSON
+ * It has a very powerful data binding mechanism that provides a rich set of features for mapping Java objects to JSON and back
+ * It is a widely used library in the Java community
+ * It is used in many popular Java frameworks like Spring, Jersey, JAX-RS, Resteasy, and many others
+ */
 public class JsonUtils {
 
     private ObjectMapper mapper;
@@ -39,23 +42,7 @@ public class JsonUtils {
         }
     }
 
-    public <T> T getObjectFromJson(JsonNode jsonNode, Class<T> valueType) throws JsonProcessingException {
-        return mapper.treeToValue(jsonNode, valueType);
-    }
-
     public <T> T getObjectFromJsonString(String json, Class<T> valueType) throws JsonProcessingException {
         return mapper.readValue(json, valueType);
-    }
-
-    public <T> T getObjectFromJsonString(String json, TypeReference<T> valueType) throws JsonProcessingException {
-        return mapper.readValue(json, valueType);
-    }
-
-    public <T> T getObjectFromFileStream(InputStream inputStream, Class<T> valueType) throws IOException {
-        return mapper.readValue(inputStream, valueType);
-    }
-
-    public <T> T convert(Map<String, Object> map, Class<T> valueType) {
-        return mapper.convertValue(map, valueType);
     }
 }

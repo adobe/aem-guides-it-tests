@@ -16,6 +16,7 @@ public class CreateTopicIT {
 
     /**
      * This method creates a topic in AEM.
+     *
      * @param adminAuthor
      */
     public void testCreateTopic(CQClient adminAuthor) {

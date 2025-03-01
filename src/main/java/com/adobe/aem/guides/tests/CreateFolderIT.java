@@ -16,6 +16,7 @@ public class CreateFolderIT {
 
     /**
      * This method creates a folder in AEM.
+     *
      * @param adminAuthor
      */
     public void testCreateFolder(CQClient adminAuthor) {

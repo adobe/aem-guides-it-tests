@@ -14,6 +14,7 @@ public class UpdateDitaMap {
 
     /**
      * This method updates a dita map in AEM to add the newly created topic as a topicref in the map.
+     *
      * @param adminAuthor
      */
     public void testUpdateDitaMap(CQClient adminAuthor) {
