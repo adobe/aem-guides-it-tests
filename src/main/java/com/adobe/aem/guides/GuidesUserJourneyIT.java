@@ -8,6 +8,7 @@ import com.adobe.aem.guides.tests.CreateTopicIT;
 import com.adobe.aem.guides.tests.GeneratePdfIT;
 import com.adobe.aem.guides.tests.GetSystemStatusIT;
 import com.adobe.aem.guides.tests.UpdateDitaMap;
+import com.adobe.aem.guides.tests.UpdateTopicIT;
 import com.adobe.aem.guides.utils.TestUtils;
 import com.adobe.cq.testing.client.CQClient;
 import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
@@ -66,31 +67,37 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void testEcreateMap() {
+    public void testEcreateTopic() {
+        log.info("Updating test topic");
+        new UpdateTopicIT().testUpdateTopic(adminAuthor);
+    }
+
+    @Test
+    public void testFcreateMap() {
         log.info("Creating test map");
         new CreateMapIT().testCreateMap(adminAuthor);
     }
 
     @Test
-    public void testFUpdateDitaMap() {
+    public void testGUpdateDitaMap() {
         log.info("Updating test map");
         new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
     }
 
     @Test
-    public void testGcreatePreset() {
+    public void testHcreatePreset() {
         log.info("Creating test preset");
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
-    public void testHgeneratePdf() {
+    public void testIgeneratePdf() {
         log.info("Generating PDF");
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
     @Test
-    public void testIcomparePdfWithBaseline() {
+    public void testJcomparePdfWithBaseline() {
         new ComparePdfWithBaselineIT().testComparePdfWithBaseline(adminAuthor);
     }
 }
