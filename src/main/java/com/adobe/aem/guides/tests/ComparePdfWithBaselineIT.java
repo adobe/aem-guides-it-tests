@@ -103,8 +103,7 @@ public class ComparePdfWithBaselineIT {
 
     private String getResourcePath() {
         try {
-            URL resourceUrl = ComparePdfWithBaselineIT.class.getResource("/");
-            return Paths.get(resourceUrl.toURI()).toString();
+            return "/tmp";
         } catch (Exception e) {
             throw new RuntimeException("Error in getting resource path", e);
         }
