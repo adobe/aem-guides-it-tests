@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,12 +27,24 @@ public class ComparePdfWithBaselineIT {
 
     private static final Logger log = LoggerFactory.getLogger(ComparePdfWithBaselineIT.class);
 
+    /**
+     * This method compares the generated pdf with the baseline pdf.
+     * It downloads the generated pdf from AEM and the baseline pdf from the storage account.
+     * It then compares the text content of both the pdfs.
+     *
+     * @param adminAuthor
+     */
     public void testComparePdfWithBaseline(CQClient adminAuthor) {
         downloadGeneratedPdf(adminAuthor);
         downloadBaselinePdf();
         comparePdfs();
     }
 
+    /**
+     * This method downloads the generated pdf from AEM.
+     *
+     * @param adminAuthor
+     */
     private void downloadGeneratedPdf(CQClient adminAuthor) {
         try {
             SlingHttpResponse response = adminAuthor.doStreamGet("/content/dam/fmdita-outputs/pdfs/test-map_test-pdf.pdf", null, null, 200);
@@ -54,6 +65,9 @@ public class ComparePdfWithBaselineIT {
         }
     }
 
+    /**
+     * This method downloads the baseline pdf from the storage account.
+     */
     private void downloadBaselinePdf() {
         String fileURL = "https://xmldoxstorage.blob.core.windows.net/xmldoxstorage/aem-guides-store/test-map_test-pdf.pdf?sv=2023-01-03&st=2025-02-28T17%3A16%3A54Z&se=2028-03-01T17%3A16%3A00Z&sr=b&sp=r&sig=aJ4o1KeglPoj%2BrOpfC4QWfN3Lt%2BSXi%2FKjgdPfWABaos%3D"; // Replace with your file URL
         Path destination = Paths.get(getResourcePath(), "baseline_pdf.pdf"); // Replace with your desired file path
@@ -81,6 +95,10 @@ public class ComparePdfWithBaselineIT {
         }
     }
 
+    /**
+     * This method compares the text content of the generated pdf with the baseline pdf.
+     * If the text content of both the pdfs is same, the test passes.
+     */
     private void comparePdfs() {
         try {
             String baselinePdfPath = Paths.get(getResourcePath(), "baseline_pdf.pdf").toString();

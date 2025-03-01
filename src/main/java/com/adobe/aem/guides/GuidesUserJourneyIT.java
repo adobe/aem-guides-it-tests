@@ -19,6 +19,13 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class is the entry point for the Guides User Journey.
+ * It runs the tests in the order specified by the {@link FixMethodOrder} annotation.
+ * The tests are run in logical order of asset creation, asset modification and then publishing the newly created asset.
+ * Finally, the PDF is generated and compared with the baseline pdf to check for any issues in referencing or internal
+ * working of AEM Guides.
+ */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GuidesUserJourneyIT {
 

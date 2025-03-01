@@ -14,6 +14,10 @@ public class CreateFolderIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateFolderIT.class);
 
+    /**
+     * This method creates a folder in AEM.
+     * @param adminAuthor
+     */
     public void testCreateFolder(CQClient adminAuthor) {
         try {
             CreateFolderDto createFolderDto = new CreateFolderDto()

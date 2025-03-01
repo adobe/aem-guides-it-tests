@@ -22,6 +22,10 @@ import java.util.List;
 public class GeneratePdfIT {
     private static final Logger log = LoggerFactory.getLogger(GeneratePdfIT.class);
 
+    /**
+     * This method triggers the pdf generation in AEM.
+     * @param adminAuthor
+     */
     public void testGeneratePdf(CQClient adminAuthor) {
         try {
             GenerateOutputDto generateOutputDto = new GenerateOutputDto()
@@ -44,6 +48,14 @@ public class GeneratePdfIT {
         }
     }
 
+    /**
+     * This method checks the status of the pdf generation process.
+     * It polls the publish listener servlet to check the status of the pdf generation process.
+     * @param adminAuthor
+     * @return
+     * @throws ClientException
+     * @throws JsonProcessingException
+     */
     private static PublishingStatusDto checkingPublishingStatus(CQClient adminAuthor) throws ClientException, JsonProcessingException {
         int pollCount = 0;
         int totalPollCount = 50;

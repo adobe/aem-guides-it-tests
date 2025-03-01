@@ -12,6 +12,10 @@ public class CreatePresetIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreatePresetIT.class);
 
+    /**
+     * This method creates and then updates a preset in AEM.
+     * @param adminAuthor
+     */
     public void testCreatePreset(CQClient adminAuthor) {
         try {
             UrlEncodedFormEntity entity = FormEntityBuilder.create()

@@ -14,6 +14,10 @@ public class CreateTopicIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateTopicIT.class);
 
+    /**
+     * This method creates a topic in AEM.
+     * @param adminAuthor
+     */
     public void testCreateTopic(CQClient adminAuthor) {
         try {
             String template = TestUtils.getTemplate(adminAuthor, TemplateType.TOPIC_TEMPLATE);

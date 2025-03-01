@@ -17,6 +17,10 @@ public class CreateMapIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateMapIT.class);
 
+    /**
+     * This method creates a ditamap in AEM.
+     * @param adminAuthor
+     */
     public void testCreateMap(CQClient adminAuthor) {
         try {
             String template = TestUtils.getTemplate(adminAuthor, TemplateType.MAP_TEMPLATE);
