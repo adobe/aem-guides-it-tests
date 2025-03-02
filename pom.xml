@@ -20,7 +20,7 @@
 
     <groupId>com.adobe.aem.addon.guides</groupId>
     <artifactId>aem-guides-it-tests</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <name>AEM Guides - Integration Tests</name>
     <description>AEM Guides Integration Tests for AEMaaCS</description>
 
