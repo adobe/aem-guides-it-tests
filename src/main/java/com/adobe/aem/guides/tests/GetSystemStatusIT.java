@@ -27,8 +27,8 @@ public class GetSystemStatusIT {
             log.info("[testSystemStatusResponse] Response from pkgStatus {}", responseContent);
 
             SystemStatusResponseDto resp = JsonUtils.getInstance().getObjectFromJsonString(responseContent, SystemStatusResponseDto.class);
-            Assert.assertTrue(resp.getCloud());
-            Assert.assertTrue(resp.getUuid());
+            Assert.assertTrue(resp.isCloud());
+            Assert.assertTrue(resp.isUuid());
             Assert.assertArrayEquals(new String[]{}, resp.getInactiveBundles());
         } catch (Exception e) {
             log.error("Error in checking system status", e);

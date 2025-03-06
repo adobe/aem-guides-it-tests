@@ -12,6 +12,7 @@
 
 package com.adobe.aem.guides.tests;
 
+import com.adobe.aem.guides.Constants;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -38,20 +39,22 @@ import java.nio.file.Paths;
 /**
  * This class contains the utilities to compare two PDF file. The PDF files are compared based on the text content.
  */
-public class ComparePdfWithBaselineIT {
+public class ComparePdfWithBenchmarkIT {
 
-    private static final Logger log = LoggerFactory.getLogger(ComparePdfWithBaselineIT.class);
+    private static final Logger log = LoggerFactory.getLogger(ComparePdfWithBenchmarkIT.class);
+
+    private static final String RESOURCE_PATH = "/tmp";
 
     /**
-     * This method compares the generated pdf with the baseline pdf.
-     * It downloads the generated pdf from AEM and the baseline pdf from the storage account.
+     * This method compares the generated pdf with the benchmark pdf.
+     * It downloads the generated pdf from AEM and the benchmark pdf from the storage account.
      * It then compares the text content of both the pdfs.
      *
      * @param adminAuthor
      */
-    public void testComparePdfWithBaseline(CQClient adminAuthor) {
+    public void testComparePdfWithBenchmark(CQClient adminAuthor) {
         downloadGeneratedPdf(adminAuthor);
-        downloadBaselinePdf();
+        downloadBenchmarkPdf();
         comparePdfs();
     }
 
@@ -64,7 +67,7 @@ public class ComparePdfWithBaselineIT {
         try {
             SlingHttpResponse response = adminAuthor.doStreamGet("/content/dam/fmdita-outputs/pdfs/test-map_test-pdf.pdf", null, null, 200);
             HttpEntity entity = response.getEntity();
-            Path generatedPdfPath = Paths.get(getResourcePath(), "generated_pdf.pdf");
+            Path generatedPdfPath = Paths.get(RESOURCE_PATH, "generated_pdf.pdf");
             log.info("Generated pdf path: {}", generatedPdfPath);
             try (BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(generatedPdfPath));
                  InputStream stream = entity.getContent()) {
@@ -81,14 +84,14 @@ public class ComparePdfWithBaselineIT {
     }
 
     /**
-     * This method downloads the baseline pdf from the storage account.
+     * This method downloads the benchmark pdf from the storage account.
      */
-    private void downloadBaselinePdf() {
-        String fileURL = "https://xmldoxstorage.blob.core.windows.net/xmldoxstorage/aem-guides-store/test-map_test-pdf.pdf?sv=2023-01-03&st=2025-02-28T17%3A16%3A54Z&se=2028-03-01T17%3A16%3A00Z&sr=b&sp=r&sig=aJ4o1KeglPoj%2BrOpfC4QWfN3Lt%2BSXi%2FKjgdPfWABaos%3D"; // Replace with your file URL
-        Path destination = Paths.get(getResourcePath(), "baseline_pdf.pdf"); // Replace with your desired file path
+    private void downloadBenchmarkPdf() {
+
+        Path destination = Paths.get(RESOURCE_PATH, "benchmark_pdf.pdf"); // Replace with your desired file path
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpGet request = new HttpGet(fileURL);
+            HttpGet request = new HttpGet(Constants.BENCHMARK_PDF_URI);
             try (CloseableHttpResponse response = httpClient.execute(request)) {
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
@@ -104,23 +107,23 @@ public class ComparePdfWithBaselineIT {
                 }
                 EntityUtils.consume(entity);
             }
-            log.info("Baseline pdf downloaded successfully");
+            log.info("benchmark pdf downloaded successfully");
         } catch (Exception e) {
-            log.error("Error in downloading baseline pdf", e);
+            log.error("Error in downloading benchmark pdf", e);
         }
     }
 
     /**
-     * This method compares the text content of the generated pdf with the baseline pdf.
+     * This method compares the text content of the generated pdf with the benchmark pdf.
      * If the text content of both the pdfs is same, the test passes.
      */
     private void comparePdfs() {
         try {
-            String baselinePdfPath = Paths.get(getResourcePath(), "baseline_pdf.pdf").toString();
-            String generatedPdfPath = Paths.get(getResourcePath(), "generated_pdf.pdf").toString();
-            log.info("baseline pdf path to compare: {}", baselinePdfPath);
+            String benchmarkPdfPath = Paths.get(RESOURCE_PATH, "benchmark_pdf.pdf").toString();
+            String generatedPdfPath = Paths.get(RESOURCE_PATH, "generated_pdf.pdf").toString();
+            log.info("benchmark pdf path to compare: {}", benchmarkPdfPath);
             log.info("Generated pdf path to compare: {}", generatedPdfPath);
-            String text1 = extractTextFromPDF(baselinePdfPath);
+            String text1 = extractTextFromPDF(benchmarkPdfPath);
             String text2 = extractTextFromPDF(generatedPdfPath);
             if (!text1.equals(text2)) {
                 Assert.fail("The PDF files are different.");
@@ -131,14 +134,6 @@ public class ComparePdfWithBaselineIT {
         } catch (Exception e) {
             log.error("Error in comparing pdfs", e);
             Assert.fail("Error in comparing pdfs");
-        }
-    }
-
-    private String getResourcePath() {
-        try {
-            return "/tmp";
-        } catch (Exception e) {
-            throw new RuntimeException("Error in getting resource path", e);
         }
     }
 

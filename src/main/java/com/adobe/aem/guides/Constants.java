@@ -24,5 +24,6 @@ public class Constants {
     public static final String TOPIC_NAME = "test.dita";
     public static final String TOPIC_TEMPLATE_NAME = "topic.dita";
     public static final String MAP_TEMPLATE_NAME = "map.ditamap";
+    public static final String BENCHMARK_PDF_URI = "https://xmldoxstorage.blob.core.windows.net/xmldoxstorage/aem-guides-store/test-map_test-pdf.pdf?sv=2023-01-03&st=2025-02-28T17%3A16%3A54Z&se=2028-03-01T17%3A16%3A00Z&sr=b&sp=r&sig=aJ4o1KeglPoj%2BrOpfC4QWfN3Lt%2BSXi%2FKjgdPfWABaos%3D";
 
 }

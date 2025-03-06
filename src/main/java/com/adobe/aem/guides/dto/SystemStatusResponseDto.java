@@ -13,13 +13,17 @@
 package com.adobe.aem.guides.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SystemStatusResponseDto {
     private String[] activeBundles;
     private String[] inactiveBundles;
-    private Boolean isCloud;
-    private Boolean isUuid;
+
+    @JsonProperty("isCloud")
+    private boolean cloud;
+    @JsonProperty("isUuid")
+    private boolean uuid;
 
     public String[] getActiveBundles() {
         return activeBundles;
@@ -39,21 +43,21 @@ public class SystemStatusResponseDto {
         return this;
     }
 
-    public Boolean getCloud() {
-        return isCloud;
+    public boolean isCloud() {
+        return cloud;
     }
 
-    public SystemStatusResponseDto setCloud(Boolean cloud) {
-        isCloud = cloud;
+    public SystemStatusResponseDto setCloud(boolean cloud) {
+        this.cloud = cloud;
         return this;
     }
 
-    public Boolean getUuid() {
-        return isUuid;
+    public boolean isUuid() {
+        return uuid;
     }
 
-    public SystemStatusResponseDto setUuid(Boolean uuid) {
-        isUuid = uuid;
+    public SystemStatusResponseDto setUuid(boolean uuid) {
+        this.uuid = uuid;
         return this;
     }
 }

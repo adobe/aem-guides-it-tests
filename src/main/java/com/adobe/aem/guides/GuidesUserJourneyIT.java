@@ -12,7 +12,7 @@
 
 package com.adobe.aem.guides;
 
-import com.adobe.aem.guides.tests.ComparePdfWithBaselineIT;
+import com.adobe.aem.guides.tests.ComparePdfWithBenchmarkIT;
 import com.adobe.aem.guides.tests.CreateFolderIT;
 import com.adobe.aem.guides.tests.CreateMapIT;
 import com.adobe.aem.guides.tests.CreatePresetIT;
@@ -55,61 +55,61 @@ public class GuidesUserJourneyIT {
     }
 
     @Test
-    public void testAcheckSystemHealth() {
+    public void aaTestCheckSystemHealth() {
         log.info("Checking system health");
         new GetSystemStatusIT().testSystemStatusResponseForCloudTrue(adminAuthor);
     }
 
     @Test
-    public void testBdeleteFolder() {
+    public void abTestDeleteFolder() {
         log.info("Deleting test folder");
         TestUtils.deleteFolder(adminAuthor);
     }
 
     @Test
-    public void testCcreateFolder() {
+    public void acTestCreateFolder() {
         log.info("Creating test folder");
         new CreateFolderIT().testCreateFolder(adminAuthor);
     }
 
     @Test
-    public void testDcreateTopic() {
+    public void adTestCreateTopic() {
         log.info("Creating test topic");
         new CreateTopicIT().testCreateTopic(adminAuthor);
     }
 
     @Test
-    public void testEcreateTopic() {
+    public void aeTestUpdateTopic() {
         log.info("Updating test topic");
         new UpdateTopicIT().testUpdateTopic(adminAuthor);
     }
 
     @Test
-    public void testFcreateMap() {
+    public void afTestCreateMap() {
         log.info("Creating test map");
         new CreateMapIT().testCreateMap(adminAuthor);
     }
 
     @Test
-    public void testGUpdateDitaMap() {
+    public void agTestUpdateDitaMap() {
         log.info("Updating test map");
         new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
     }
 
     @Test
-    public void testHcreatePreset() {
+    public void ahTestCreatePreset() {
         log.info("Creating test preset");
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
     @Test
-    public void testIgeneratePdf() {
+    public void aiTestGeneratePdf() {
         log.info("Generating PDF");
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
     @Test
-    public void testJcomparePdfWithBaseline() {
-        new ComparePdfWithBaselineIT().testComparePdfWithBaseline(adminAuthor);
+    public void testJcomparePdfWithBenchmarkPdf() {
+        new ComparePdfWithBenchmarkIT().testComparePdfWithBenchmark(adminAuthor);
     }
 }
