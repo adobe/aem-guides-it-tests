@@ -1,5 +1,8 @@
 package com.adobe.aem.guides.content;
 
+/**
+ * This class contains the content of a test topic. This topic will be injected into a map and then we will publish it.
+ */
 public class TopicContent {
 
     private TopicContent() {

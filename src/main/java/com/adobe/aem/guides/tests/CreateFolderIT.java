@@ -10,6 +10,9 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class contains the utilities to create a folder in AEM.
+ */
 public class CreateFolderIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateFolderIT.class);

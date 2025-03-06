@@ -19,6 +19,10 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains the utilities to generate a pdf in AEM.
+ * It triggers the pdf generation process and checks the status of the process.
+ */
 public class GeneratePdfIT {
     private static final Logger log = LoggerFactory.getLogger(GeneratePdfIT.class);
 

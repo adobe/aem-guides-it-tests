@@ -10,6 +10,9 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class contains the utilities to create a topic in AEM.
+ */
 public class CreateTopicIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateTopicIT.class);

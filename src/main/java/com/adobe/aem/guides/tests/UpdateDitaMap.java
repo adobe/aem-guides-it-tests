@@ -9,6 +9,10 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class contains the utilities to update a dita map in AEM.
+ * In this test suite we are using it to add the newly created topic in the map.
+ */
 public class UpdateDitaMap {
 
     private static final Logger log = LoggerFactory.getLogger(UpdateDitaMap.class);

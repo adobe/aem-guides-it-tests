@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Tests if the system status is correct and all the bundles are up and running as expected.
+ * This class tests if the system status is correct and all the bundles are up and running as expected.
  */
 public class GetSystemStatusIT {
 

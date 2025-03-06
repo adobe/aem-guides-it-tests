@@ -13,6 +13,10 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains the utilities to create a preset in AEM. A empty preset is created first and then it is being
+ * updated with the required values.
+ */
 public class CreatePresetIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreatePresetIT.class);

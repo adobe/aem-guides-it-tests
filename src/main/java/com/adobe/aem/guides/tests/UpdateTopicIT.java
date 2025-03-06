@@ -9,13 +9,15 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+/**
+ * Test class contains the utilities to update a dita topic in AEM.
+ */
 public class UpdateTopicIT {
 
     private static final Logger log = LoggerFactory.getLogger(UpdateTopicIT.class);
 
     /**
-     * This method updates a dita topic.
+     * This test method updates a dita topic.
      * In this test suite we are using it to add short description and some descriptive text in a paragraph.
      *
      * @param adminAuthor

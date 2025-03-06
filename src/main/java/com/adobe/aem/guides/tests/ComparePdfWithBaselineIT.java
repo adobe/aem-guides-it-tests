@@ -23,6 +23,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * This class contains the utilities to compare two PDF file. The PDF files are compared based on the text content.
+ */
 public class ComparePdfWithBaselineIT {
 
     private static final Logger log = LoggerFactory.getLogger(ComparePdfWithBaselineIT.class);

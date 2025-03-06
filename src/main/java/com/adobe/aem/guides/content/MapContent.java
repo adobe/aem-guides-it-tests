@@ -2,6 +2,9 @@ package com.adobe.aem.guides.content;
 
 import com.adobe.aem.guides.Constants;
 
+/**
+ * This class contains the map content. This map will be used to create a map file in AEM and then we will publish it.
+ */
 public class MapContent {
 
     private MapContent() {

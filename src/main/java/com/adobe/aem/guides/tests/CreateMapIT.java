@@ -13,6 +13,9 @@ import org.slf4j.LoggerFactory;
 import static com.adobe.aem.guides.Constants.MAP_NAME;
 import static com.adobe.aem.guides.Constants.TEST_FOLDER_PATH;
 
+/**
+ * This class contains the utilities to create a ditamap in AEM.
+ */
 public class CreateMapIT {
 
     private static final Logger log = LoggerFactory.getLogger(CreateMapIT.class);
