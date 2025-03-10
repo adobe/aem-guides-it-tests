@@ -54,60 +54,90 @@ public class GuidesUserJourneyIT {
         adminAuthor = cqBaseClassRule.authorRule.getAdminClient(CQClient.class);
     }
 
+    /**
+     * This test method checks the system health before starting the user journey.
+     */
     @Test
     public void aaTestCheckSystemHealth() {
         log.info("Checking system health");
         new GetSystemStatusIT().testSystemStatusResponseForCloudTrue(adminAuthor);
     }
 
+    /**
+     * This test method deletes the test folder if it exists.
+     */
     @Test
     public void abTestDeleteFolder() {
         log.info("Deleting test folder");
         TestUtils.deleteFolder(adminAuthor);
     }
 
+    /**
+     * This test method creates a test folder which will be used to create the test dita files.
+     */
     @Test
     public void acTestCreateFolder() {
         log.info("Creating test folder");
         new CreateFolderIT().testCreateFolder(adminAuthor);
     }
 
+    /**
+     * This test method creates a test topic which will be used as a topicref in the test ditamap.
+     */
     @Test
     public void adTestCreateTopic() {
         log.info("Creating test topic");
         new CreateTopicIT().testCreateTopic(adminAuthor);
     }
 
+    /**
+     * This test method updates the test topic with some content.
+     */
     @Test
     public void aeTestUpdateTopic() {
         log.info("Updating test topic");
         new UpdateTopicIT().testUpdateTopic(adminAuthor);
     }
 
+    /**
+     * This test method creates a test map which will be used to generate the PDF.
+     */
     @Test
     public void afTestCreateMap() {
         log.info("Creating test map");
         new CreateMapIT().testCreateMap(adminAuthor);
     }
 
+    /**
+     * This test method updates the test map with the test topicref.
+     */
     @Test
     public void agTestUpdateDitaMap() {
         log.info("Updating test map");
         new UpdateDitaMap().testUpdateDitaMap(adminAuthor);
     }
 
+    /**
+     * This test method creates a test preset which will be used to generate the DITA-OT based PDF.
+     */
     @Test
     public void ahTestCreatePreset() {
         log.info("Creating test preset");
         new CreatePresetIT().testCreatePreset(adminAuthor);
     }
 
+    /**
+     * This test method generates the DITA-OT based PDF using the test map and test preset.
+     */
     @Test
     public void aiTestGeneratePdf() {
         log.info("Generating PDF");
         new GeneratePdfIT().testGeneratePdf(adminAuthor);
     }
 
+    /**
+     * This test method compares the generated PDF with the benchmark PDF to check for any issues.
+     */
     @Test
     public void testJcomparePdfWithBenchmarkPdf() {
         new ComparePdfWithBenchmarkIT().testComparePdfWithBenchmark(adminAuthor);
