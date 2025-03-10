@@ -35,7 +35,7 @@ public class CreateMapIT {
     /**
      * This method creates a ditamap in AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testCreateMap(CQClient adminAuthor) {
         try {

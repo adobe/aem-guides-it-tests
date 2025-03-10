@@ -41,7 +41,7 @@ public class GeneratePdfIT {
     /**
      * This method triggers the pdf generation in AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testGeneratePdf(CQClient adminAuthor) {
         try {
@@ -69,10 +69,10 @@ public class GeneratePdfIT {
      * This method checks the status of the pdf generation process.
      * It polls the publish listener servlet to check the status of the pdf generation process.
      *
-     * @param adminAuthor
-     * @return
-     * @throws ClientException
-     * @throws JsonProcessingException
+     * @param adminAuthor: {@link CQClient}
+     * @return {@link PublishingStatusResponseDto} containing the publishing status details
+     * @throws ClientException in case any exception occurs in API calls
+     * @throws JsonProcessingException in case any exception occurs while parsing JSON
      */
     private static PublishingStatusResponseDto checkingPublishingStatus(CQClient adminAuthor) throws ClientException, JsonProcessingException {
         int pollCount = 0;

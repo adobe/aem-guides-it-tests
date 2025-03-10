@@ -14,6 +14,7 @@ package com.adobe.aem.guides.tests;
 
 import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.content.TopicContent;
+import com.adobe.aem.guides.dto.TemplateResponseDto;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
@@ -32,7 +33,7 @@ public class UpdateTopicIT {
      * This test method updates a dita topic.
      * In this test suite we are using it to add short description and some descriptive text in a paragraph.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testUpdateTopic(CQClient adminAuthor) {
         try {

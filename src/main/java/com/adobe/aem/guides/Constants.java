@@ -12,6 +12,9 @@
 
 package com.adobe.aem.guides;
 
+/**
+ * This class contains the constants used in the project.
+ */
 public class Constants {
 
     private Constants() {

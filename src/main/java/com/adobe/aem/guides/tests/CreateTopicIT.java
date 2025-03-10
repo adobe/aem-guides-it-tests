@@ -32,7 +32,7 @@ public class CreateTopicIT {
     /**
      * This method creates a topic in AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testCreateTopic(CQClient adminAuthor) {
         try {

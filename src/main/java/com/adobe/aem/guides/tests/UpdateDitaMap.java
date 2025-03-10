@@ -32,7 +32,7 @@ public class UpdateDitaMap {
     /**
      * This method updates a dita map. In this test suite we are using it to add the newly created topic in the map.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testUpdateDitaMap(CQClient adminAuthor) {
         try {

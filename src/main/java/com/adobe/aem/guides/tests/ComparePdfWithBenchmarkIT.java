@@ -50,7 +50,7 @@ public class ComparePdfWithBenchmarkIT {
      * It downloads the generated pdf from AEM and the benchmark pdf from the storage account.
      * It then compares the text content of both the pdfs.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testComparePdfWithBenchmark(CQClient adminAuthor) {
         downloadGeneratedPdf(adminAuthor);
@@ -61,7 +61,7 @@ public class ComparePdfWithBenchmarkIT {
     /**
      * This method downloads the generated pdf from AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     private void downloadGeneratedPdf(CQClient adminAuthor) {
         try {

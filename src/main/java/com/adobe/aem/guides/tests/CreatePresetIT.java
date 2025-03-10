@@ -36,7 +36,7 @@ public class CreatePresetIT {
     /**
      * This method creates and then updates a preset in AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testCreatePreset(CQClient adminAuthor) {
         try {

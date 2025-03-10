@@ -32,7 +32,7 @@ public class CreateFolderIT {
     /**
      * This method creates a folder in AEM.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testCreateFolder(CQClient adminAuthor) {
         try {

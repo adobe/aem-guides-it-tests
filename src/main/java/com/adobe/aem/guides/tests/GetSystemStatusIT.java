@@ -18,7 +18,7 @@ public class GetSystemStatusIT {
     /**
      * Verifies the response of the system status endpoint.
      *
-     * @param adminAuthor
+     * @param adminAuthor: {@link CQClient} object
      */
     public void testSystemStatusResponseForCloudTrue(CQClient adminAuthor) {
         try {

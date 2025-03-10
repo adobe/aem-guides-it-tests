@@ -42,6 +42,9 @@ public class TestUtilities {
 
     private static final Logger log = LoggerFactory.getLogger(TestUtilities.class);
 
+    private TestUtilities() {
+    }
+
     public static void deleteFolder(CQClient adminAuthor) {
         try {
             SlingHttpResponse slingHttpResponse = adminAuthor.doGet(TEST_FOLDER_PATH + ".json");
