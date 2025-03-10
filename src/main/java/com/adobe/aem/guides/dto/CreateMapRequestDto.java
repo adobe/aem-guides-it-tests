@@ -12,7 +12,10 @@
 
 package com.adobe.aem.guides.dto;
 
-public class CreateMapDto {
+/**
+ * This class contains the request parameters to create a map in AEM.
+ */
+public class CreateMapRequestDto {
     private String parent;
     private String title;
     private String name;
@@ -22,7 +25,7 @@ public class CreateMapDto {
         return parent;
     }
 
-    public CreateMapDto setParent(String parent) {
+    public CreateMapRequestDto setParent(String parent) {
         this.parent = parent;
         return this;
     }
@@ -31,7 +34,7 @@ public class CreateMapDto {
         return title;
     }
 
-    public CreateMapDto setTitle(String title) {
+    public CreateMapRequestDto setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -40,7 +43,7 @@ public class CreateMapDto {
         return name;
     }
 
-    public CreateMapDto setName(String name) {
+    public CreateMapRequestDto setName(String name) {
         this.name = name;
         return this;
     }
@@ -49,7 +52,7 @@ public class CreateMapDto {
         return template;
     }
 
-    public CreateMapDto setTemplate(String template) {
+    public CreateMapRequestDto setTemplate(String template) {
         this.template = template;
         return this;
     }

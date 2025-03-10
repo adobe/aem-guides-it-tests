@@ -13,7 +13,7 @@
 package com.adobe.aem.guides.tests;
 
 import com.adobe.aem.guides.Constants;
-import com.adobe.aem.guides.dto.CreateFolderDto;
+import com.adobe.aem.guides.dto.CreateFolderRequestDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.HttpEntity;
@@ -36,7 +36,7 @@ public class CreateFolderIT {
      */
     public void testCreateFolder(CQClient adminAuthor) {
         try {
-            CreateFolderDto createFolderDto = new CreateFolderDto()
+            CreateFolderRequestDto createFolderDto = new CreateFolderRequestDto()
                     .setCharset(Constants.UTF_8)
                     .setJcrTitle(Constants.TEST_FOLDER_NAME)
                     .setName(Constants.TEST_FOLDER_NAME)

@@ -12,7 +12,10 @@
 
 package com.adobe.aem.guides.dto;
 
-public class Template {
+/**
+ * This class contains the template details like path and id.
+ */
+public class TemplateResponseDto {
     private String path;
     private String id;
 
@@ -20,7 +23,7 @@ public class Template {
         return path;
     }
 
-    public Template setPath(String path) {
+    public TemplateResponseDto setPath(String path) {
         this.path = path;
         return this;
     }
@@ -29,7 +32,7 @@ public class Template {
         return id;
     }
 
-    public Template setId(String id) {
+    public TemplateResponseDto setId(String id) {
         this.id = id;
         return this;
     }

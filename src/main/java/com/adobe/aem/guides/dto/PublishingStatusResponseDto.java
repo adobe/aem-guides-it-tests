@@ -12,7 +12,11 @@
 
 package com.adobe.aem.guides.dto;
 
-public class PublishingStatusDto {
+/**
+ * This class contains the response DTO for a single publishing job in AEM Guides
+ * The same DTO is used for both completed and queued publishing jobs.
+ */
+public class PublishingStatusResponseDto {
     private String outputStatus;
     private String outputName;
     private String outputSetting;
@@ -35,7 +39,7 @@ public class PublishingStatusDto {
         return outputStatus;
     }
 
-    public PublishingStatusDto setOutputStatus(String outputStatus) {
+    public PublishingStatusResponseDto setOutputStatus(String outputStatus) {
         this.outputStatus = outputStatus;
         return this;
     }
@@ -44,7 +48,7 @@ public class PublishingStatusDto {
         return outputName;
     }
 
-    public PublishingStatusDto setOutputName(String outputName) {
+    public PublishingStatusResponseDto setOutputName(String outputName) {
         this.outputName = outputName;
         return this;
     }
@@ -53,7 +57,7 @@ public class PublishingStatusDto {
         return outputSetting;
     }
 
-    public PublishingStatusDto setOutputSetting(String outputSetting) {
+    public PublishingStatusResponseDto setOutputSetting(String outputSetting) {
         this.outputSetting = outputSetting;
         return this;
     }
@@ -62,7 +66,7 @@ public class PublishingStatusDto {
         return initiator;
     }
 
-    public PublishingStatusDto setInitiator(String initiator) {
+    public PublishingStatusResponseDto setInitiator(String initiator) {
         this.initiator = initiator;
         return this;
     }
@@ -71,7 +75,7 @@ public class PublishingStatusDto {
         return outputType;
     }
 
-    public PublishingStatusDto setOutputType(String outputType) {
+    public PublishingStatusResponseDto setOutputType(String outputType) {
         this.outputType = outputType;
         return this;
     }
@@ -80,7 +84,7 @@ public class PublishingStatusDto {
         return ditaotFaliure;
     }
 
-    public PublishingStatusDto setDitaotFaliure(boolean ditaotFaliure) {
+    public PublishingStatusResponseDto setDitaotFaliure(boolean ditaotFaliure) {
         this.ditaotFaliure = ditaotFaliure;
         return this;
     }
@@ -89,7 +93,7 @@ public class PublishingStatusDto {
         return outputTitle;
     }
 
-    public PublishingStatusDto setOutputTitle(String outputTitle) {
+    public PublishingStatusResponseDto setOutputTitle(String outputTitle) {
         this.outputTitle = outputTitle;
         return this;
     }
@@ -98,7 +102,7 @@ public class PublishingStatusDto {
         return cancelledBy;
     }
 
-    public PublishingStatusDto setCancelledBy(String cancelledBy) {
+    public PublishingStatusResponseDto setCancelledBy(String cancelledBy) {
         this.cancelledBy = cancelledBy;
         return this;
     }
@@ -107,7 +111,7 @@ public class PublishingStatusDto {
         return ditaotLogFile;
     }
 
-    public PublishingStatusDto setDitaotLogFile(String ditaotLogFile) {
+    public PublishingStatusResponseDto setDitaotLogFile(String ditaotLogFile) {
         this.ditaotLogFile = ditaotLogFile;
         return this;
     }
@@ -116,7 +120,7 @@ public class PublishingStatusDto {
         return generatedIn;
     }
 
-    public PublishingStatusDto setGeneratedIn(long generatedIn) {
+    public PublishingStatusResponseDto setGeneratedIn(long generatedIn) {
         this.generatedIn = generatedIn;
         return this;
     }
@@ -125,7 +129,7 @@ public class PublishingStatusDto {
         return jobId;
     }
 
-    public PublishingStatusDto setJobId(String jobId) {
+    public PublishingStatusResponseDto setJobId(String jobId) {
         this.jobId = jobId;
         return this;
     }
@@ -134,7 +138,7 @@ public class PublishingStatusDto {
         return generatedTime;
     }
 
-    public PublishingStatusDto setGeneratedTime(long generatedTime) {
+    public PublishingStatusResponseDto setGeneratedTime(long generatedTime) {
         this.generatedTime = generatedTime;
         return this;
     }
@@ -143,7 +147,7 @@ public class PublishingStatusDto {
         return outputPath;
     }
 
-    public PublishingStatusDto setOutputPath(String outputPath) {
+    public PublishingStatusResponseDto setOutputPath(String outputPath) {
         this.outputPath = outputPath;
         return this;
     }
@@ -152,7 +156,7 @@ public class PublishingStatusDto {
         return errorsExist;
     }
 
-    public PublishingStatusDto setErrorsExist(boolean errorsExist) {
+    public PublishingStatusResponseDto setErrorsExist(boolean errorsExist) {
         this.errorsExist = errorsExist;
         return this;
     }
@@ -161,7 +165,7 @@ public class PublishingStatusDto {
         return isCancelQueued;
     }
 
-    public PublishingStatusDto setCancelQueued(boolean cancelQueued) {
+    public PublishingStatusResponseDto setCancelQueued(boolean cancelQueued) {
         isCancelQueued = cancelQueued;
         return this;
     }
@@ -170,7 +174,7 @@ public class PublishingStatusDto {
         return isCancellable;
     }
 
-    public PublishingStatusDto setCancellable(boolean cancellable) {
+    public PublishingStatusResponseDto setCancellable(boolean cancellable) {
         isCancellable = cancellable;
         return this;
     }
@@ -179,7 +183,7 @@ public class PublishingStatusDto {
         return nodePath;
     }
 
-    public PublishingStatusDto setNodePath(String nodePath) {
+    public PublishingStatusResponseDto setNodePath(String nodePath) {
         this.nodePath = nodePath;
         return this;
     }

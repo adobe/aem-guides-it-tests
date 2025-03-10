@@ -13,9 +13,9 @@
 package com.adobe.aem.guides.tests;
 
 import com.adobe.aem.guides.Constants;
-import com.adobe.aem.guides.dto.AllPublishingStatusDto;
-import com.adobe.aem.guides.dto.GenerateOutputDto;
-import com.adobe.aem.guides.dto.PublishingStatusDto;
+import com.adobe.aem.guides.dto.AllPublishingStatusResponseDto;
+import com.adobe.aem.guides.dto.GenerateOutputRequestDto;
+import com.adobe.aem.guides.dto.PublishingStatusResponseDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.cq.testing.client.CQClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -45,14 +45,14 @@ public class GeneratePdfIT {
      */
     public void testGeneratePdf(CQClient adminAuthor) {
         try {
-            GenerateOutputDto generateOutputDto = new GenerateOutputDto()
+            GenerateOutputRequestDto generateOutputDto = new GenerateOutputRequestDto()
                     .setPresetName("test-pdf")
                     .setMapPath(Constants.TEST_FOLDER_PATH + "/" + Constants.MAP_NAME);
             StringEntity httpEntity = new StringEntity(JsonUtils.getInstance().getJson(generateOutputDto));
             httpEntity.setContentType("application/json");
             adminAuthor.doPost("/bin/guides/v1/output/execute", httpEntity, 200);
             log.info("Successfully triggered PDF generation. Will wait for process to complete.");
-            PublishingStatusDto publishingStatusDto = checkingPublishingStatus(adminAuthor);
+            PublishingStatusResponseDto publishingStatusDto = checkingPublishingStatus(adminAuthor);
             if (publishingStatusDto != null && !publishingStatusDto.isDitaotFaliure()) {
                 log.info("PDF generation completed successfully.");
             } else {
@@ -74,7 +74,7 @@ public class GeneratePdfIT {
      * @throws ClientException
      * @throws JsonProcessingException
      */
-    private static PublishingStatusDto checkingPublishingStatus(CQClient adminAuthor) throws ClientException, JsonProcessingException {
+    private static PublishingStatusResponseDto checkingPublishingStatus(CQClient adminAuthor) throws ClientException, JsonProcessingException {
         int pollCount = 0;
         int totalPollCount = 50;
         int pollInterval = 5000;
@@ -84,7 +84,7 @@ public class GeneratePdfIT {
         while (pollCount < totalPollCount) {
             SlingHttpResponse slingHttpResponse = adminAuthor.doGet("/bin/publishlistener", params, 200);
             String content = slingHttpResponse.getContent();
-            AllPublishingStatusDto status = JsonUtils.getInstance().getObjectFromJsonString(content, AllPublishingStatusDto.class);
+            AllPublishingStatusResponseDto status = JsonUtils.getInstance().getObjectFromJsonString(content, AllPublishingStatusResponseDto.class);
             if (!status.getQueuedOutputs().isEmpty()) {
                 log.info("PDF generation is still in progress. Polling again in {} seconds.", pollInterval / 1000);
             } else {

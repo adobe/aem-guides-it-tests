@@ -14,7 +14,10 @@ package com.adobe.aem.guides.dto;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class CreateFolderDto {
+/**
+ * This class contains the request body to create a folder in AEM.
+ */
+public class CreateFolderRequestDto {
     @JsonProperty("./jcr:content/jcr:title")
     private String JcrTitle;
     @JsonProperty(".name")
@@ -30,7 +33,7 @@ public class CreateFolderDto {
         return JcrTitle;
     }
 
-    public CreateFolderDto setJcrTitle(String jcrTitle) {
+    public CreateFolderRequestDto setJcrTitle(String jcrTitle) {
         JcrTitle = jcrTitle;
         return this;
     }
@@ -39,7 +42,7 @@ public class CreateFolderDto {
         return name;
     }
 
-    public CreateFolderDto setName(String name) {
+    public CreateFolderRequestDto setName(String name) {
         this.name = name;
         return this;
     }
@@ -48,7 +51,7 @@ public class CreateFolderDto {
         return primaryType;
     }
 
-    public CreateFolderDto setPrimaryType(String primaryType) {
+    public CreateFolderRequestDto setPrimaryType(String primaryType) {
         this.primaryType = primaryType;
         return this;
     }
@@ -57,7 +60,7 @@ public class CreateFolderDto {
         return jcrContentPrimaryType;
     }
 
-    public CreateFolderDto setJcrContentPrimaryType(String jcrContentPrimaryType) {
+    public CreateFolderRequestDto setJcrContentPrimaryType(String jcrContentPrimaryType) {
         this.jcrContentPrimaryType = jcrContentPrimaryType;
         return this;
     }
@@ -66,7 +69,7 @@ public class CreateFolderDto {
         return charset;
     }
 
-    public CreateFolderDto setCharset(String charset) {
+    public CreateFolderRequestDto setCharset(String charset) {
         this.charset = charset;
         return this;
     }

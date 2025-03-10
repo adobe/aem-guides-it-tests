@@ -14,25 +14,29 @@ package com.adobe.aem.guides.dto;
 
 import java.util.List;
 
-public class AllPublishingStatusDto {
+/**
+ * This class is a data transfer object for publishing status response of all the completed and queued outputs.
+ * It contains a list of {@link PublishingStatusResponseDto} for both completed and queued outputs.
+ */
+public class AllPublishingStatusResponseDto {
 
-    List<PublishingStatusDto> outputs;
-    List<PublishingStatusDto> queuedOutputs;
+    List<PublishingStatusResponseDto> outputs;
+    List<PublishingStatusResponseDto> queuedOutputs;
 
-    public List<PublishingStatusDto> getOutputs() {
+    public List<PublishingStatusResponseDto> getOutputs() {
         return outputs;
     }
 
-    public AllPublishingStatusDto setOutputs(List<PublishingStatusDto> outputs) {
+    public AllPublishingStatusResponseDto setOutputs(List<PublishingStatusResponseDto> outputs) {
         this.outputs = outputs;
         return this;
     }
 
-    public List<PublishingStatusDto> getQueuedOutputs() {
+    public List<PublishingStatusResponseDto> getQueuedOutputs() {
         return queuedOutputs;
     }
 
-    public AllPublishingStatusDto setQueuedOutputs(List<PublishingStatusDto> queuedOutputs) {
+    public AllPublishingStatusResponseDto setQueuedOutputs(List<PublishingStatusResponseDto> queuedOutputs) {
         this.queuedOutputs = queuedOutputs;
         return this;
     }

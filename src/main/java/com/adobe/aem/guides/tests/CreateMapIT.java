@@ -12,7 +12,7 @@
 
 package com.adobe.aem.guides.tests;
 
-import com.adobe.aem.guides.dto.CreateMapDto;
+import com.adobe.aem.guides.dto.CreateMapRequestDto;
 import com.adobe.aem.guides.utils.JsonUtils;
 import com.adobe.aem.guides.utils.TemplateType;
 import com.adobe.aem.guides.utils.TestUtils;
@@ -40,7 +40,7 @@ public class CreateMapIT {
     public void testCreateMap(CQClient adminAuthor) {
         try {
             String template = TestUtils.getTemplate(adminAuthor, TemplateType.MAP_TEMPLATE);
-            CreateMapDto createMapDto = new CreateMapDto()
+            CreateMapRequestDto createMapDto = new CreateMapRequestDto()
                     .setName(MAP_NAME)
                     .setTemplate(template)
                     .setTitle("Test Map")

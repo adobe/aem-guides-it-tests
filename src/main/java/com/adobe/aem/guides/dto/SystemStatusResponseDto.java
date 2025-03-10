@@ -15,6 +15,10 @@ package com.adobe.aem.guides.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * This class contains the response DTO for the system status API.
+ * This DTO contains the list of active and inactive bundles and also if the build is cloud or uuid build.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SystemStatusResponseDto {
     private String[] activeBundles;

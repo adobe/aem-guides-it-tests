@@ -12,7 +12,10 @@
 
 package com.adobe.aem.guides.dto;
 
-public class GenerateOutputDto {
+/**
+ * DTO class to hold the request parameters for generating output.
+ */
+public class GenerateOutputRequestDto {
     private String presetName;
     private String mapPath;
     private String nodejs;
@@ -21,7 +24,7 @@ public class GenerateOutputDto {
         return presetName;
     }
 
-    public GenerateOutputDto setPresetName(String presetName) {
+    public GenerateOutputRequestDto setPresetName(String presetName) {
         this.presetName = presetName;
         return this;
     }
@@ -30,7 +33,7 @@ public class GenerateOutputDto {
         return mapPath;
     }
 
-    public GenerateOutputDto setMapPath(String mapPath) {
+    public GenerateOutputRequestDto setMapPath(String mapPath) {
         this.mapPath = mapPath;
         return this;
     }
@@ -39,7 +42,7 @@ public class GenerateOutputDto {
         return nodejs;
     }
 
-    public GenerateOutputDto setNodejs(String nodejs) {
+    public GenerateOutputRequestDto setNodejs(String nodejs) {
         this.nodejs = nodejs;
         return this;
     }

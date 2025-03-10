@@ -16,26 +16,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * This class contains the response DTO for the get folder profile API.
+ * For this test utilities we are only de-serializing the template details from the folder profile
+ * and ignoring other details.
+ * Each template is represented using the {@link TemplateResponseDto} class.
+ */
 public class GetFolderProfileResponseDto {
 
     @JsonProperty("map_templates")
-    private List<Template> mapTemplates;
-    private List<Template> templates;
+    private List<TemplateResponseDto> mapTemplates;
+    private List<TemplateResponseDto> templates;
 
-    public List<Template> getMapTemplates() {
+    public List<TemplateResponseDto> getMapTemplates() {
         return mapTemplates;
     }
 
-    public GetFolderProfileResponseDto setMapTemplates(List<Template> mapTemplates) {
+    public GetFolderProfileResponseDto setMapTemplates(List<TemplateResponseDto> mapTemplates) {
         this.mapTemplates = mapTemplates;
         return this;
     }
 
-    public List<Template> getTemplates() {
+    public List<TemplateResponseDto> getTemplates() {
         return templates;
     }
 
-    public GetFolderProfileResponseDto setTemplates(List<Template> templates) {
+    public GetFolderProfileResponseDto setTemplates(List<TemplateResponseDto> templates) {
         this.templates = templates;
         return this;
     }

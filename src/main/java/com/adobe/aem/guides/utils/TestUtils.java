@@ -13,7 +13,7 @@
 package com.adobe.aem.guides.utils;
 
 import com.adobe.aem.guides.dto.GetFolderProfileResponseDto;
-import com.adobe.aem.guides.dto.Template;
+import com.adobe.aem.guides.dto.TemplateResponseDto;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.http.NameValuePair;
@@ -61,7 +61,7 @@ public class TestUtils {
     }
 
     public static String getTemplate(CQClient adminAuthor, TemplateType templateType) {
-        List<Template> templates = Collections.emptyList();
+        List<TemplateResponseDto> templates = Collections.emptyList();
         String templateToSelect = templateType == TemplateType.MAP_TEMPLATE ? MAP_TEMPLATE_NAME : TOPIC_TEMPLATE_NAME;
         try {
             List<NameValuePair> params = new ArrayList<>();
@@ -79,7 +79,7 @@ public class TestUtils {
             log.error("Error in deleting test folder", e);
         }
         Optional<String> template = templates.stream()
-                .map(Template::getPath)
+                .map(TemplateResponseDto::getPath)
                 .filter(path -> FilenameUtils.getName(path).equals(templateToSelect))
                 .findFirst();
         return template.orElseThrow(() -> new RuntimeException("Template not found"));
