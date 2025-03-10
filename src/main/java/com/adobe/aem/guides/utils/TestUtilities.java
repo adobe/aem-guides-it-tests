@@ -38,9 +38,9 @@ import static com.adobe.aem.guides.Constants.TOPIC_TEMPLATE_NAME;
  * Utility class for test methods.
  * This class contains methods to delete folder, get template etc.
  */
-public class TestUtils {
+public class TestUtilities {
 
-    private static final Logger log = LoggerFactory.getLogger(TestUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(TestUtilities.class);
 
     public static void deleteFolder(CQClient adminAuthor) {
         try {

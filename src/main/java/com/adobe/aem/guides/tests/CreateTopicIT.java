@@ -14,7 +14,7 @@ package com.adobe.aem.guides.tests;
 
 import com.adobe.aem.guides.Constants;
 import com.adobe.aem.guides.utils.TemplateType;
-import com.adobe.aem.guides.utils.TestUtils;
+import com.adobe.aem.guides.utils.TestUtilities;
 import com.adobe.cq.testing.client.CQClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.sling.testing.clients.util.FormEntityBuilder;
@@ -36,7 +36,7 @@ public class CreateTopicIT {
      */
     public void testCreateTopic(CQClient adminAuthor) {
         try {
-            String template = TestUtils.getTemplate(adminAuthor, TemplateType.TOPIC_TEMPLATE);
+            String template = TestUtilities.getTemplate(adminAuthor, TemplateType.TOPIC_TEMPLATE);
             UrlEncodedFormEntity entity = FormEntityBuilder.create()
                     .addParameter("template", template)
                     .addParameter("title", "Test Topic")

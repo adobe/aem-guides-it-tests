@@ -21,7 +21,7 @@ import com.adobe.aem.guides.tests.GeneratePdfIT;
 import com.adobe.aem.guides.tests.GetSystemStatusIT;
 import com.adobe.aem.guides.tests.UpdateDitaMap;
 import com.adobe.aem.guides.tests.UpdateTopicIT;
-import com.adobe.aem.guides.utils.TestUtils;
+import com.adobe.aem.guides.utils.TestUtilities;
 import com.adobe.cq.testing.client.CQClient;
 import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
 import org.junit.BeforeClass;
@@ -69,7 +69,7 @@ public class GuidesUserJourneyIT {
     @Test
     public void abTestDeleteFolder() {
         log.info("Deleting test folder");
-        TestUtils.deleteFolder(adminAuthor);
+        TestUtilities.deleteFolder(adminAuthor);
     }
 
     /**
