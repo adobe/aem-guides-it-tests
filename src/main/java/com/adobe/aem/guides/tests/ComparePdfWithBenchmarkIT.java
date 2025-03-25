@@ -43,7 +43,7 @@ public class ComparePdfWithBenchmarkIT {
 
     private static final Logger log = LoggerFactory.getLogger(ComparePdfWithBenchmarkIT.class);
 
-    private static final String RESOURCE_PATH = "/tmp";
+    private static final String RESOURCE_PATH = System.getProperty("java.io.tmpdir");
 
     /**
      * This method compares the generated pdf with the benchmark pdf.
@@ -65,6 +65,7 @@ public class ComparePdfWithBenchmarkIT {
      */
     private void downloadGeneratedPdf(CQClient adminAuthor) {
         try {
+            log.info("Downloading generated pdf to {}", RESOURCE_PATH);
             SlingHttpResponse response = adminAuthor.doStreamGet("/content/dam/fmdita-outputs/pdfs/test-map_test-pdf.pdf", null, null, 200);
             HttpEntity entity = response.getEntity();
             Path generatedPdfPath = Paths.get(RESOURCE_PATH, "generated_pdf.pdf");
@@ -87,7 +88,7 @@ public class ComparePdfWithBenchmarkIT {
      * This method downloads the benchmark pdf from the storage account.
      */
     private void downloadBenchmarkPdf() {
-
+        log.info("Downloading benchmark pdf to {}", RESOURCE_PATH);
         Path destination = Paths.get(RESOURCE_PATH, "benchmark_pdf.pdf"); // Replace with your desired file path
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
